@@ -5,4 +5,13 @@ public class Paper implements Form{
     public int action(){
         return 3;
     }
+
+    @Override
+    public boolean compete(Form form){
+        if(form.action() == 2){
+            return false;
+        }
+        return true;
+    }
+
 }
