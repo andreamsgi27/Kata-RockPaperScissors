@@ -44,7 +44,7 @@ public class Game {
         }
         return formPlayer.compete(formComputer);
     }
-
+    //Método útil para los tests
     public void guessChoice(int choice){
         this.randomChoice = choice;
     }

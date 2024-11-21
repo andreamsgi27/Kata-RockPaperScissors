@@ -6,54 +6,85 @@ import org.junit.jupiter.api.Test;
 
 import com.factoriaf5.rps.models.Form;
 import com.factoriaf5.rps.models.Rock;
+import com.factoriaf5.rps.models.Scissors;
+import com.factoriaf5.rps.models.Paper;
 
 public class GameTest {
 
-    /*@Mock
-    private Form mockPlayerForm;
-
-    private Game game;
-
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-        game = new Game(mockPlayerForm);
-    }*/
-
     @Test
-    public void playReturnsTieWhenBothFormsAreEqual() {
-        // Configurar el mock para devolver el mismo "action" que la computadora
-        //when(mockPlayerForm.action()).thenReturn(1); // Rock
-        //when(mockPlayerForm.compete(any(Form.class))).thenReturn(false);
-
+    public void playReturnsTieRock() {
         Form formPlayer = new Rock();
         Game game = new Game(formPlayer);
         game.guessChoice(1);
         String result = game.play();
         assertEquals("Empate", result);
     }
-
-    /*@Test
-    public void playReturnsWinWhenPlayerBeatsComputer() {
-        // Configurar el mock para ganar
-        when(mockPlayerForm.action()).thenReturn(1); // Rock
-        when(mockPlayerForm.compete(any(Form.class))).thenReturn(true); // Gana contra Scissors
-
-        Game game = new Game(mockPlayerForm);
+    @Test
+    public void playReturnsTieScissors() {
+        Form formPlayer = new Scissors();
+        Game game = new Game(formPlayer);
+        game.guessChoice(2);
         String result = game.play();
-
+        assertEquals("Empate", result);
+    }
+    @Test
+    public void playReturnsTiePaper() {
+        Form formPlayer = new Paper();
+        Game game = new Game(formPlayer);
+        game.guessChoice(3);
+        String result = game.play();
+        assertEquals("Empate", result);
+    }
+    @Test
+    public void playReturnsPlayerWinRockVsScissors() {
+        Form formPlayer = new Rock();
+        Game game = new Game(formPlayer);
+        game.guessChoice(2);
+        String result = game.play();
+        assertEquals("Gana jugador", result);
+    }
+    @Test
+    public void playReturnsPCWinsRockVsPaper() {
+        Form formPlayer = new Rock();
+        Game game = new Game(formPlayer);
+        game.guessChoice(3);
+        String result = game.play();
+        assertEquals("Gana computadora", result);
+    }
+    @Test
+    public void playReturnsPCWinsScissorsVsRock() {
+        Form formPlayer = new Scissors();
+        Game game = new Game(formPlayer);
+        game.guessChoice(1);
+        String result = game.play();
+        assertEquals("Gana computadora", result);
+    }
+    @Test
+    public void playReturnsPCWinsScissorsVsPaper() {
+        Form formPlayer = new Scissors();
+        Game game = new Game(formPlayer);
+        game.guessChoice(3);
+        String result = game.play();
         assertEquals("Gana jugador", result);
     }
 
     @Test
-    public void playReturnsLossWhenComputerBeatsPlayer() {
-        // Configurar el mock para perder
-        when(mockPlayerForm.action()).thenReturn(3); // Paper
-        when(mockPlayerForm.compete(any(Form.class))).thenReturn(false); // Pierde contra Scissors
-
-        Game game = new Game(mockPlayerForm);
+    public void playReturnsPlayerWinsPaperVsRock() {
+        Form formPlayer = new Paper();
+        Game game = new Game(formPlayer);
+        game.guessChoice(1);
         String result = game.play();
+        assertEquals("Gana jugador", result);
+    }
 
+    @Test
+    public void playReturnsPCWinsPaperVsScissors() {
+        Form formPlayer = new Paper();
+        Game game = new Game(formPlayer);
+        game.guessChoice(2);
+        String result = game.play();
         assertEquals("Gana computadora", result);
-    }*/
+    }
+
+
 }
