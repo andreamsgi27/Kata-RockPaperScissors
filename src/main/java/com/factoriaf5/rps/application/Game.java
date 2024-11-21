@@ -6,6 +6,7 @@ import com.factoriaf5.rps.models.Rock;
 import com.factoriaf5.rps.models.Scissors;
 
 public class Game {
+    public int randomChoice = (int) (Math.random() * 3 + 1);
     private Form formPlayer;
 
     public Game(Form formPlayer) {
@@ -13,19 +14,18 @@ public class Game {
     }
 
     public String play() {
-        int choice = (int) (Math.random() * 3 + 1);
-        Form formComputer = buildComputerForm(choice);
+        Form formComputer = buildComputerForm(randomChoice);
 
-        Boolean winner = winner(formComputer);
-
+        Boolean winner = this.winner(formComputer); // Usamos `this` para referirnos a la instancia actual
+    
         if (winner == null) {
             return "Empate";
         }
-
+    
         return winner ? "Gana jugador" : "Gana computadora";
     }
 
-    public Form buildComputerForm(int choice) {
+    public static Form buildComputerForm(int choice) {
         switch (choice) {
             case 1:
                 return new Rock();
@@ -43,5 +43,9 @@ public class Game {
             return null; //Empate
         }
         return formPlayer.compete(formComputer);
+    }
+
+    public void guessChoice(int choice){
+        this.randomChoice = choice;
     }
 }
