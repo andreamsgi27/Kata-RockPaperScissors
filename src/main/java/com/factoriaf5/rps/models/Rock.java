@@ -8,7 +8,7 @@ public class Rock implements Form{
 
     @Override
     public boolean compete(Form form){
-        if(form.action() == 3){
+        if((form.action() == 3) || (form.action() == 5)){
             return false;
         }
         return true;

@@ -1,17 +1,16 @@
 package com.factoriaf5.rps.models;
 
-public class Paper implements Form{
+public class Spock implements Form{
     @Override
     public int action(){
-        return 3;
+        return 5;
     }
 
     @Override
     public boolean compete(Form form){
-        if((form.action() == 2) || (form.action() == 4)){
+        if((form.action() == 4) || (form.action() == 3)){
             return false;
         }
         return true;
     }
-
 }

@@ -1,12 +1,14 @@
 package com.factoriaf5.rps.application;
 
 import com.factoriaf5.rps.models.Form;
+import com.factoriaf5.rps.models.Lizard;
 import com.factoriaf5.rps.models.Paper;
 import com.factoriaf5.rps.models.Rock;
 import com.factoriaf5.rps.models.Scissors;
+import com.factoriaf5.rps.models.Spock;
 
 public class Game {
-    public int randomChoice = (int) (Math.random() * 3 + 1);
+    public int randomChoice = (int) (Math.random() * 5 + 1);
     private Form formPlayer;
 
     public Game(Form formPlayer) {
@@ -33,6 +35,10 @@ public class Game {
                 return new Scissors();
             case 3:
                 return new Paper();
+            case 4:
+                return new Lizard();
+            case 5:
+                return new Spock();
             default:
                 throw new IllegalArgumentException("Elección inválida: " + choice);
         }

@@ -8,7 +8,7 @@ public class Scissors implements Form{
 
     @Override
     public boolean compete(Form form){
-        if(form.action() == 1){
+        if((form.action() == 5) || (form.action() == 1)){
             return false;
         }
         return true;
